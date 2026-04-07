@@ -1,0 +1,140 @@
+---
+/* Experience.astro — Chronological work history timeline */
+import experienceData from '../data/experience.json';
+---
+
+<section id="experience" class="neo-section" style="background: var(--color-bg-alt);">
+  <div class="neo-container">
+    <h2 class="section-heading">Experience</h2>
+
+    <div class="timeline">
+      {experienceData.experiences.map((exp, index) => {
+        const colors = ['var(--color-coral)', 'var(--color-blue)', 'var(--color-yellow)'];
+        const accentColor = colors[index % colors.length];
+        return (
+          <div class="timeline-item">
+            <!-- Timeline dot & line -->
+            <div class="timeline-marker">
+              <div class="timeline-dot" style={`background: ${accentColor};`}></div>
+              {index < experienceData.experiences.length - 1 && <div class="timeline-line"></div>}
+            </div>
+
+            <!-- Content card -->
+            <div class="timeline-card neo-card" style="padding: 1.75rem;">
+              <div class="card-header">
+                <div class="card-meta">
+                  <span class="neo-tag" style={`background: ${accentColor};`}>
+                    {exp.startDate} — {exp.endDate}
+                  </span>
+                  <span class="exp-location">{exp.location}</span>
+                </div>
+                <h3 class="exp-title">{exp.title}</h3>
+                <h4 class="exp-company">{exp.company}</h4>
+              </div>
+
+              <p class="exp-description">{exp.description}</p>
+
+              <div class="exp-tech">
+                {exp.technologies.map((tech: string) => (
+                  <span class="neo-tag">{tech}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<style>
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    position: relative;
+  }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 1.5rem;
+  }
+
+  .timeline-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .timeline-dot {
+    width: 20px;
+    height: 20px;
+    border: var(--border-w) solid var(--color-border);
+    box-shadow: var(--shadow-sm);
+    flex-shrink: 0;
+  }
+
+  .timeline-line {
+    width: 3px;
+    flex: 1;
+    background: var(--color-border);
+    margin-top: 0.5rem;
+  }
+
+  .card-header {
+    margin-bottom: 1rem;
+  }
+
+  .card-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.75rem;
+  }
+
+  .exp-location {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+  }
+
+  .exp-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 0.25rem;
+  }
+
+  .exp-company {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+  }
+
+  .exp-description {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    margin-bottom: 1.25rem;
+  }
+
+  .exp-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .timeline-item {
+      grid-template-columns: 24px 1fr;
+      gap: 1rem;
+    }
+
+    .timeline-dot {
+      width: 14px;
+      height: 14px;
+    }
+  }
+</style>

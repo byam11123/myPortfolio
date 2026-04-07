@@ -1,0 +1,168 @@
+---
+/* Navbar.astro — Clean neobrutalist navigation matching the reference design */
+import MobileMenu from './MobileMenu.tsx';
+import profile from '../data/profile.json';
+
+const navLinks = [
+  { label: 'About', href: '#about' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Skills', href: '#skills' },
+  { label: 'Blog', href: '#blog' },
+  { label: 'Contact', href: '#contact' },
+];
+---
+
+<nav id="navbar">
+  <div class="nav-inner neo-container">
+    <!-- Logo / Name -->
+    <a href="#" class="nav-logo" aria-label="Back to top">
+      <span class="logo-text">{profile.name.split(' ')[0].toUpperCase()}</span>
+    </a>
+
+    <!-- Desktop center links -->
+    <ul class="nav-links" role="list">
+      {navLinks.slice(0, -1).map((link) => (
+        <li>
+          <a href={link.href} class="nav-link">{link.label}</a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- CTA button on right -->
+    <div class="nav-right">
+      <a href="#contact" class="nav-cta">GET IN TOUCH</a>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-wrapper">
+      <MobileMenu client:load navLinks={navLinks} />
+    </div>
+  </div>
+</nav>
+
+<style>
+  #navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: var(--color-bg);
+    border-bottom: var(--border-w) solid var(--color-border);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 4rem;
+  }
+
+  /* Logo */
+  .nav-logo {
+    text-decoration: none;
+    color: var(--color-text);
+  }
+
+  .logo-text {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.15rem;
+    letter-spacing: 0.08em;
+    border: var(--border-w) solid var(--color-border);
+    padding: 0.3rem 0.6rem;
+    box-shadow: var(--shadow-sm);
+    background: var(--color-surface);
+    transition: transform 80ms ease-out, box-shadow 80ms ease-out;
+    display: inline-block;
+  }
+
+  .nav-logo:hover .logo-text {
+    transform: translate(-1px, -1px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .nav-logo:active .logo-text {
+    transform: translate(2px, 2px);
+    box-shadow: none;
+  }
+
+  /* Center links */
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 0.15rem;
+  }
+
+  .nav-link {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    color: var(--color-text);
+    padding: 0.4rem 0.65rem;
+    border: 2px solid transparent;
+    transition: all 80ms ease-out;
+  }
+
+  .nav-link:hover {
+    border-color: var(--color-border);
+    background: var(--color-yellow);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .nav-link:active {
+    transform: translate(2px, 2px);
+    box-shadow: none;
+  }
+
+  /* Right CTA */
+  .nav-right {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-cta {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    color: var(--color-text);
+    padding: 0.45rem 0.9rem;
+    border: var(--border-w) solid var(--color-border);
+    box-shadow: var(--shadow-sm);
+    background: var(--color-surface);
+    transition: all 80ms ease-out;
+  }
+
+  .nav-cta:hover {
+    background: var(--color-coral);
+    color: #fff;
+    transform: translate(-1px, -1px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .nav-cta:active {
+    transform: translate(2px, 2px);
+    box-shadow: none;
+  }
+
+  .mobile-menu-wrapper {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .nav-links,
+    .nav-right {
+      display: none;
+    }
+    .mobile-menu-wrapper {
+      display: block;
+    }
+  }
+</style>

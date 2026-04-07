@@ -1,0 +1,130 @@
+---
+/* Education.astro — Academic background cards */
+import educationData from '../data/education.json';
+---
+
+<section id="education" class="neo-section">
+  <div class="neo-container">
+    <h2 class="section-heading">Education</h2>
+
+    <div class="edu-grid">
+      {educationData.education.map((edu) => (
+        <div class="edu-card neo-card" style="padding: 2rem;">
+          <div class="edu-header">
+            <span class="neo-tag" style="background: var(--color-purple); color: #fff;">
+              {edu.startDate} — {edu.endDate}
+            </span>
+          </div>
+
+          <h3 class="edu-degree">{edu.degree}</h3>
+          <h4 class="edu-institution">{edu.institution}</h4>
+          <p class="edu-location">{edu.location}</p>
+
+          {/** Grade section hidden for now
+          {edu.grade && (
+            <div class="edu-grade">
+              <span class="grade-label">GRADE:</span>
+              <span class="grade-value">{edu.grade}</span>
+            </div>
+          )}
+          **/}
+
+          {edu.activities && edu.activities.length > 0 && (
+            <div class="edu-activities">
+              <span class="activities-label">ACTIVITIES</span>
+              <div class="activities-list">
+                {edu.activities.map((activity: string) => (
+                  <span class="neo-tag">{activity}</span>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .edu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .edu-header {
+    margin-bottom: 1.25rem;
+  }
+
+  .edu-degree {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 0.25rem;
+  }
+
+  .edu-institution {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    margin-bottom: 0.25rem;
+  }
+
+  .edu-location {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1.25rem;
+  }
+
+  .edu-grade {
+    padding: 0.75rem 1rem;
+    background: var(--color-yellow);
+    border: var(--border-w) solid var(--color-border);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 1.25rem;
+    display: inline-flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .grade-label {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .grade-value {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 0.9rem;
+  }
+
+  .edu-activities {
+    margin-top: 0.5rem;
+  }
+
+  .activities-label {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .activities-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .edu-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

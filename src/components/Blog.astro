@@ -1,0 +1,157 @@
+---
+/* Blog.astro — Article cards linking to external blog posts */
+import blogData from '../data/blog.json';
+---
+
+<section id="blog" class="neo-section" style="background: var(--color-bg-alt);">
+  <div class="neo-container">
+    <h2 class="section-heading">Writing</h2>
+
+    <p class="blog-intro">{blogData.writingStyle}</p>
+
+    <div class="blog-grid">
+      {blogData.articles.map((article, index) => {
+        const colors = ['var(--color-coral)', 'var(--color-blue)', 'var(--color-yellow)'];
+        const accentColor = colors[index % colors.length];
+        return (
+          <a href={`https://${article.url}`} target="_blank" rel="noopener noreferrer" class="blog-card neo-card">
+            <div class="blog-accent" style={`background: ${accentColor};`}></div>
+            <div class="blog-content">
+              <div class="blog-meta">
+                <span class="neo-tag" style={`background: ${accentColor};`}>{article.readTime}</span>
+                <span class="blog-date">{article.date}</span>
+              </div>
+              <h3 class="blog-title">{article.title}</h3>
+              <p class="blog-excerpt">{article.excerpt}</p>
+              <div class="blog-tags">
+                {article.tags.map((tag: string) => (
+                  <span class="neo-tag">{tag}</span>
+                ))}
+              </div>
+              <span class="blog-read-more">READ ARTICLE ↗</span>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+
+    <!-- Writing themes -->
+    <div class="blog-themes">
+      <span class="themes-label">WRITING ABOUT:</span>
+      <div class="themes-list">
+        {blogData.themes.map((theme: string) => (
+          <span class="neo-tag" style="background: var(--color-surface);">{theme}</span>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .blog-intro {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    max-width: 700px;
+    margin-bottom: 2.5rem;
+  }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .blog-card {
+    text-decoration: none;
+    color: var(--color-text);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .blog-accent {
+    height: 6px;
+    border-bottom: 2px solid var(--color-border);
+  }
+
+  .blog-content {
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .blog-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .blog-date {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+  }
+
+  .blog-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+
+  .blog-excerpt {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    margin-bottom: 1.25rem;
+    flex: 1;
+  }
+
+  .blog-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .blog-read-more {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-coral);
+  }
+
+  .blog-themes {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .themes-label {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
+  }
+
+  .themes-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .blog-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

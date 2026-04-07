@@ -1,0 +1,21 @@
+{
+  "name": "Byamkesh Kaiwartya",
+  "title": "Software Developer",
+  "tagline": "Engineering reliable systems that make work simpler.",
+  "heroHeadline": "Building Scalable Solutions",
+  "heroSubline": "Software developer passionate about system engineering, performance optimization, and clean code",
+  "about": "I'm Byamkesh Kaiwartya, a software developer focused on building web applications, databases, and automation tools. I specialize in modern technologies like Next.js, React, TypeScript, and PostgreSQL, with a focus on creating reliable systems that make work simpler. From teaching programming to building AI-powered document systems, I enjoy solving real-world problems with clean, efficient code.",
+  "interests": [
+    "Web Development",
+    "AI & LLM Integration",
+    "Database Design",
+    "Workflow Automation",
+    "Teaching & Mentoring"
+  ],
+  "contact": {
+    "email": "kaiwartyabyamkesh7@gmail.com",
+    "github": "github.com/byam11123",
+    "linkedin": "www.linkedin.com/in/byamkesh-kaiwartya-80218a380/",
+    "twitter": "x.com/byam11123"
+  }
+}

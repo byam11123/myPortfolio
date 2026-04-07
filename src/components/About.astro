@@ -1,0 +1,84 @@
+---
+/* About.astro — Biography and interests section */
+import profile from '../data/profile.json';
+---
+
+<section id="about" class="neo-section">
+  <div class="neo-container">
+    <h2 class="section-heading">About</h2>
+
+    <div class="about-grid">
+      <!-- Biography -->
+      <div class="about-bio neo-card" style="padding: 2rem;">
+        <div class="bio-label neo-tag" style="background: var(--color-blue); margin-bottom: 1.5rem;">
+          WHO I AM
+        </div>
+        <p class="bio-text">{profile.about}</p>
+      </div>
+
+      <!-- Interests -->
+      <div class="about-interests">
+        <div class="interests-label neo-tag" style="background: var(--color-orange); margin-bottom: 1.5rem;">
+          INTERESTS
+        </div>
+        <div class="interests-grid">
+          {profile.interests.map((interest: string, index: number) => {
+            const colors = ['var(--color-coral)', 'var(--color-yellow)', 'var(--color-blue)', 'var(--color-purple)', 'var(--color-green)'];
+            return (
+              <div class="interest-item" style={`background: ${colors[index % colors.length]};`}>
+                <span class="interest-text">{interest}</span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .bio-text {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--color-text-muted);
+  }
+
+  .interests-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .interest-item {
+    padding: 1rem 1.25rem;
+    border: var(--border-w) solid var(--color-border);
+    box-shadow: var(--shadow-md);
+    transition: transform 80ms ease-out, box-shadow 80ms ease-out;
+  }
+
+  .interest-item:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .interest-text {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  @media (max-width: 768px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,58 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "AI-Powered Invoice Extraction System",
+      "description": "Developed an intelligent document processing system using Gemini AI models to extract data from PDFs, images, and scanned invoices. Designed a full OCR pipeline with built-in validation and error handling for diverse document formats.",
+      "tech": [
+        "Gemini AI",
+        "OCR",
+        "Python",
+        "PDF Processing",
+        "Document Parsing"
+      ],
+      "highlights": [
+        "Achieved 92% accuracy in automated data extraction",
+        "Full OCR pipeline with validation & error handling",
+        "Significantly reduced manual data entry effort",
+        "Streamlined invoice processing workflow"
+      ],
+      "github": null,
+      "live": null
+    },
+    {
+      "id": 2,
+      "title": "Requisition Management System",
+      "description": "Built a full-featured requisition platform replacing a manual paper-based process. Implemented role-based dashboards for administrators, managers, accountants, and purchasers.",
+      "tech": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "PostgreSQL",
+        "Supabase",
+        "Tailwind CSS"
+      ],
+      "highlights": [
+        "Role-based dashboards for 4 user types",
+        "Cash Approval, Repair & Maintenance, Salary Advance workflows",
+        "Real-time status updates & notifications",
+        "Real-time reporting & analytics for material requests"
+      ],
+      "github": null,
+      "live": null
+    },
+    {
+      "id": 3,
+      "title": "Office Checklist & Task Management",
+      "description": "Developed a task assignment and tracking system replacing a manual oversight process. Implemented approval workflows with real-time Google Sheets synchronization.",
+      "tech": ["React", "Google Sheets API", "Node.js", "Automation"],
+      "highlights": [
+        "Automated approval workflows",
+        "Google Sheets integration & real-time sync",
+        "Reduced task follow-up time with automated notifications"
+      ],
+      "github": null,
+      "live": null
+    }
+  ]
+}

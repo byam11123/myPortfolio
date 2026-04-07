@@ -1,0 +1,222 @@
+@import "tailwindcss";
+
+/* ============================================
+   NEOBRUTALISM DESIGN SYSTEM
+   Flat, bold, physical — zero apologies.
+   ============================================ */
+
+/* --- Custom Properties --- */
+@theme {
+  --color-bg: #fff8e7;
+  --color-bg-alt: #fef3c7;
+  --color-surface: #ffffff;
+  --color-text: #1a1a1a;
+  --color-text-muted: #4a4a4a;
+  --color-border: #1a1a1a;
+  --color-coral: #ff6b6b;
+  --color-blue: #4ecdc4;
+  --color-yellow: #ffe66d;
+  --color-purple: #a855f7;
+  --color-orange: #ff8c42;
+  --color-green: #2dd4bf;
+  --color-pink: #f472b6;
+
+  /* Shadows — always hard, always bottom-right, zero blur */
+  --shadow-sm: 2px 2px 0 #1a1a1a;
+  --shadow-md: 4px 4px 0 #1a1a1a;
+  --shadow-lg: 6px 6px 0 #1a1a1a;
+  --shadow-xl: 8px 8px 0 #1a1a1a;
+
+  /* Border */
+  --border-w: 3px;
+
+  /* Font families */
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "JetBrains Mono", monospace;
+}
+
+/* --- Base Reset --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Typography --- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+/* --- Neobrutalism Utility Classes --- */
+
+/* Card: thick border + hard shadow */
+.neo-card {
+  background: var(--color-surface);
+  border: var(--border-w) solid var(--color-border);
+  box-shadow: var(--shadow-md);
+  transition:
+    transform 80ms ease-out,
+    box-shadow 80ms ease-out;
+}
+
+.neo-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Button: the press mechanic — THE signature gesture */
+.neo-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.875rem;
+  padding: 0.75rem 1.5rem;
+  border: var(--border-w) solid var(--color-border);
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--color-text);
+  background: var(--color-surface);
+  transition:
+    transform 80ms ease-out,
+    box-shadow 80ms ease-out;
+}
+
+.neo-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: var(--shadow-lg);
+}
+
+.neo-btn:active {
+  transform: translate(4px, 4px);
+  box-shadow: none;
+}
+
+/* Primary button variant */
+.neo-btn-primary {
+  background: var(--color-coral);
+  color: #ffffff;
+}
+
+.neo-btn-blue {
+  background: var(--color-blue);
+  color: var(--color-text);
+}
+
+.neo-btn-yellow {
+  background: var(--color-yellow);
+  color: var(--color-text);
+}
+
+/* Tag/chip: small neobrutalist label */
+.neo-tag {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.75rem;
+  border: 2px solid var(--color-border);
+  box-shadow: 2px 2px 0 var(--color-border);
+  background: var(--color-surface);
+}
+
+/* Section heading treatment */
+.section-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  margin-bottom: 3rem;
+  position: relative;
+  display: inline-block;
+}
+
+.section-heading::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: var(--color-border);
+}
+
+/* Container */
+.neo-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Section spacing */
+.neo-section {
+  padding: 6rem 0;
+}
+
+/* Divider — heavy rule */
+.neo-divider {
+  border: none;
+  height: 3px;
+  background: var(--color-border);
+  margin: 0;
+}
+
+/* Focus states — bold, on-brand */
+*:focus-visible {
+  outline: 3px solid var(--color-coral);
+  outline-offset: 2px;
+}
+
+/* Selection */
+::selection {
+  background: var(--color-yellow);
+  color: var(--color-text);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+  border-left: 3px solid var(--color-border);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-text);
+  border: 2px solid var(--color-border);
+}

@@ -1,0 +1,25 @@
+{
+  "articles": [
+    {
+      "id": 1,
+      "title": "Your First Blog Post Title",
+      "description": "A brief description of what this article covers.",
+      "excerpt": "A short preview or summary of the article.",
+      "tags": [
+        "Technology1",
+        "Technology2",
+        "Topic"
+      ],
+      "readTime": "5 min read",
+      "date": "2026-04-01",
+      "url": "your-blog-url.com/your-first-post"
+    }
+  ],
+  "writingStyle": "I write about practical software development challenges, sharing real-world solutions and best practices. My articles focus on implementation details, performance considerations, and architectural patterns that developers can apply in their daily work.",
+  "themes": [
+    "Software Development",
+    "System Design",
+    "Best Practices",
+    "Open Source"
+  ]
+}

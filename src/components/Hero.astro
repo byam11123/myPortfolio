@@ -1,0 +1,310 @@
+---
+/* Hero.astro — Playful neobrutalist hero inspired by reference design.
+   Features: dotted grid background, massive centered heading with
+   inline decorative shapes, floating interest cards, and a scrolling marquee. */
+import profile from '../data/profile.json';
+---
+
+<section id="hero">
+  <!-- Dotted grid background -->
+  <div class="hero-bg"></div>
+
+  <!-- Floating CSS shapes using clip-path (css-shape.com inspired) -->
+  <div class="deco shape-star" aria-hidden="true"></div>
+  <div class="deco shape-cross" aria-hidden="true"></div>
+  <div class="deco shape-triangle" aria-hidden="true"></div>
+  <div class="deco shape-hexagon" aria-hidden="true"></div>
+  <div class="deco shape-rhombus" aria-hidden="true"></div>
+
+  <div class="hero-content">
+
+    <!-- Floating interest cards -->
+    <div class="float-card float-card-left" aria-hidden="true">
+      <div class="float-card-inner" style="background: var(--color-purple);">
+        <span class="float-card-icon">⚡</span>
+        <span class="float-card-label">SYSTEMS</span>
+      </div>
+    </div>
+    <div class="float-card float-card-right" aria-hidden="true">
+      <div class="float-card-inner" style="background: var(--color-green);">
+        <span class="float-card-icon">⬡</span>
+        <span class="float-card-label">RELIABLE</span>
+      </div>
+    </div>
+
+    <!-- Main heading — stacked & centered, massive -->
+    <div class="hero-heading-wrapper">
+      <h1 class="hero-heading">
+        <span class="heading-line">{profile.heroHeadline.toUpperCase()}</span>
+        <span class="heading-line heading-accent">AS A {profile.title.toUpperCase()}</span>
+      </h1>
+    </div>
+
+    <!-- Subtitle -->
+    <p class="hero-subtitle">{profile.heroSubline}</p>
+
+    <!-- CTA buttons -->
+    <div class="hero-actions">
+      <a href="#projects" class="hero-cta">
+        <span class="cta-text">VIEW MY WORK</span>
+        <span class="cta-badge">↓</span>
+      </a>
+      <a href="#contact" class="neo-btn neo-btn-yellow">GET IN TOUCH</a>
+    </div>
+  </div>
+
+
+</section>
+
+<style>
+  /* ====== HERO SECTION ====== */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 5rem;
+  }
+
+  /* Dotted grid background */
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, var(--color-border) 1px, transparent 1px);
+    background-size: 28px 28px;
+    opacity: 0.12;
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* ====== MAIN HEADING ====== */
+  .hero-heading-wrapper {
+    margin-bottom: 2rem;
+  }
+
+  .hero-heading {
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-weight: 800;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: -0.04em;
+    color: var(--color-text);
+  }
+
+  .heading-line {
+    display: block;
+  }
+
+  .heading-accent {
+    color: var(--color-purple);
+  }
+
+  /* ====== SUBTITLE & CTA ====== */
+  .hero-subtitle {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    max-width: 480px;
+    margin-bottom: 2.25rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    color: var(--color-text);
+    padding: 0.75rem 1.5rem;
+    border: var(--border-w) solid var(--color-border);
+    box-shadow: var(--shadow-md);
+    background: var(--color-surface);
+    border-radius: 50px;
+    transition: transform 80ms ease-out, box-shadow 80ms ease-out;
+    cursor: pointer;
+  }
+
+  .hero-cta:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .hero-cta:active {
+    transform: translate(4px, 4px);
+    box-shadow: none;
+  }
+
+  .cta-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-yellow);
+    border: 2px solid var(--color-border);
+    padding: 0.2rem 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 800;
+    border-radius: 20px;
+  }
+
+  /* ====== DECORATIVE SHAPES ====== */
+  .deco {
+    position: absolute;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .shape-star {
+    top: 18%;
+    right: 15%;
+    width: 60px;
+    height: 60px;
+    background: var(--color-orange);
+    -webkit-clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    transform: rotate(15deg);
+  }
+
+  .shape-cross {
+    top: 30%;
+    left: 8%;
+    width: 50px;
+    height: 50px;
+    background: var(--color-pink);
+    -webkit-clip-path: polygon(10% 25%, 35% 25%, 35% 0%, 65% 0%, 65% 25%, 90% 25%, 90% 50%, 65% 50%, 65% 100%, 35% 100%, 35% 50%, 10% 50%);
+    clip-path: polygon(10% 25%, 35% 25%, 35% 0%, 65% 0%, 65% 25%, 90% 25%, 90% 50%, 65% 50%, 65% 100%, 35% 100%, 35% 50%, 10% 50%);
+    transform: rotate(-10deg);
+  }
+
+  .shape-triangle {
+    bottom: 30%;
+    left: 12%;
+    width: 70px;
+    height: 70px;
+    background: var(--color-coral);
+    -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    transform: rotate(20deg);
+  }
+
+  .shape-hexagon {
+    bottom: 35%;
+    right: 10%;
+    width: 45px;
+    height: 45px;
+    background: var(--color-purple);
+    -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    transform: rotate(15deg);
+  }
+
+  .shape-rhombus {
+    top: 22%;
+    left: 25%;
+    width: 40px;
+    height: 40px;
+    background: var(--color-green);
+    -webkit-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    transform: rotate(-5deg);
+  }
+
+  /* ====== FLOATING CARDS ====== */
+  .float-card {
+    position: absolute;
+    z-index: 2;
+  }
+
+  .float-card-left {
+    left: 3%;
+    bottom: 28%;
+    transform: rotate(-8deg);
+  }
+
+  .float-card-right {
+    right: 3%;
+    top: 35%;
+    transform: rotate(6deg);
+  }
+
+  .float-card-inner {
+    padding: 1rem 1.25rem;
+    border: 3px solid var(--color-border);
+    box-shadow: var(--shadow-md);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    min-width: 80px;
+  }
+
+  .float-card-icon {
+    font-size: 1.5rem;
+  }
+
+  .float-card-label {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text);
+  }
+
+
+
+  /* ====== RESPONSIVE ====== */
+  @media (max-width: 768px) {
+    #hero {
+      padding-top: 5rem;
+      min-height: auto;
+    }
+
+    .hero-heading {
+      font-size: clamp(2.2rem, 10vw, 3.5rem);
+    }
+
+    .float-card,
+    .shape-cross,
+    .shape-triangle,
+    .shape-rhombus {
+      display: none;
+    }
+
+    .shape-star {
+      top: 8%;
+      right: 5%;
+    }
+
+    .shape-hexagon {
+      bottom: 25%;
+      right: 5%;
+    }
+  }
+</style>

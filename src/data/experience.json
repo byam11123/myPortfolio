@@ -1,0 +1,50 @@
+{
+  "experiences": [
+    {
+      "id": 1,
+      "title": "IT Executive & Web Developer",
+      "company": "Barbrik Project Limited (PRA Group)",
+      "location": "Raipur, CG",
+      "startDate": "Jul 2024",
+      "endDate": "Present",
+      "description": "Designed office checklist management app with task assignment, progress tracking & real-time notifications. Developed Requisition Management System for Cash Approval, Repair & Maintenance, Salary Advance with role-based workflow. Collaborated with stakeholders to gather requirements & deliver solutions on schedule.",
+      "technologies": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "PostgreSQL",
+        "Supabase",
+        "Node.js",
+        "AI/LLM APIs"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Computer Teacher",
+      "company": "Orbit Computer College",
+      "location": "Bhatgaon, Sarangarh-Bilaigarh, CG",
+      "startDate": "Apr 2021",
+      "endDate": "May 2024",
+      "description": "Taught HTML, CSS, JavaScript, C/C++, DSA, and networking to 100+ students. Mentored students on programming best practices and problem-solving.",
+      "technologies": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "C/C++",
+        "DSA",
+        "Networking"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Network Technician",
+      "company": "Dinesh Computers",
+      "location": "Janjgir Champa, CG",
+      "startDate": "Jan 2019",
+      "endDate": "Mar 2021",
+      "description": "Installed, maintained & troubleshot computer systems and networking infrastructure. Provided technical support to 50+ clients. Performed system upgrades and optimization.",
+      "technologies": ["Networking", "Hardware", "System Administration"]
+    }
+  ]
+}

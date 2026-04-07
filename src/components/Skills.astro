@@ -1,0 +1,157 @@
+---
+/* Skills.astro — Skills displayed as a scattered tag mosaic */
+import skillsData from '../data/skills.json';
+
+interface SkillCategory {
+  key: string;
+  title: string;
+  items: { name: string }[];
+  color: string;
+  symbol: string;
+}
+
+const categories: SkillCategory[] = [
+  { key: 'backend', title: 'Backend', items: skillsData.backend, color: 'var(--color-coral)', symbol: '⬡' },
+  { key: 'frontend', title: 'Frontend', items: skillsData.frontend, color: 'var(--color-blue)', symbol: '◆' },
+  { key: 'databases', title: 'Databases', items: skillsData.databases, color: 'var(--color-yellow)', symbol: '▲' },
+  { key: 'tools', title: 'Tools & DevOps', items: skillsData.tools, color: 'var(--color-purple)', symbol: '●' },
+  { key: 'ai-tech', title: 'AI & Emerging', items: skillsData['ai-tech'], color: 'var(--color-green)', symbol: '★' },
+];
+
+/* Flatten all skills with their category info */
+const allSkills = categories.flatMap((cat) =>
+  cat.items.map((skill) => ({
+    name: skill.name,
+    category: cat.title,
+    color: cat.color,
+    symbol: cat.symbol,
+  }))
+);
+---
+
+<section id="skills" class="neo-section">
+  <div class="neo-container">
+    <h2 class="section-heading">Skills</h2>
+
+    <!-- Legend -->
+    <div class="skills-legend">
+      {categories.map((cat) => (
+        <div class="legend-item">
+          <span class="legend-swatch" style={`background: ${cat.color};`}>
+            {cat.symbol}
+          </span>
+          <span class="legend-label">{cat.title}</span>
+        </div>
+      ))}
+    </div>
+
+    <!-- Skills mosaic — all skills as stamps -->
+    <div class="skills-mosaic">
+      {allSkills.map((skill) => (
+        <div class="skill-stamp" style={`border-color: var(--color-border);`}>
+          <span class="stamp-accent" style={`background: ${skill.color};`}></span>
+          <span class="stamp-name">{skill.name}</span>
+          <span class="stamp-category" style={`color: ${skill.color};`}>{skill.symbol}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .skills-legend {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .legend-swatch {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    border: var(--border-w) solid var(--color-border);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .legend-label {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .skills-mosaic {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .skill-stamp {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    background: var(--color-surface);
+    border: var(--border-w) solid var(--color-border);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    transition: transform 80ms ease-out, box-shadow 80ms ease-out;
+  }
+
+  .skill-stamp:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .skill-stamp:active {
+    transform: translate(4px, 4px);
+    box-shadow: none;
+  }
+
+  .stamp-accent {
+    display: block;
+    width: 8px;
+    align-self: stretch;
+    border-right: 2px solid var(--color-border);
+  }
+
+  .stamp-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 0.7rem 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .stamp-category {
+    font-size: 1rem;
+    padding-right: 0.75rem;
+    line-height: 1;
+  }
+
+  @media (max-width: 640px) {
+    .skills-mosaic {
+      gap: 0.75rem;
+    }
+
+    .stamp-name {
+      font-size: 0.8rem;
+      padding: 0.55rem 0.7rem;
+    }
+
+    .skills-legend {
+      gap: 1rem;
+    }
+  }
+</style>

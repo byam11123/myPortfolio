@@ -1,0 +1,39 @@
+{
+  "education": [
+    {
+      "id": 1,
+      "degree": "B.Sc. (Information Technology)",
+      "institution": "PRSU University",
+      "location": "Raipur, CG",
+      "startDate": "2021",
+      "endDate": "2024",
+      "grade": "72.33%",
+      "activities": [
+        "Web Development",
+        "Database Management",
+        "Networking",
+        "Software Engineering"
+      ]
+    },
+    {
+      "id": 2,
+      "degree": "HSC (XII) - Higher Secondary",
+      "institution": "Chhattisgarh Board",
+      "location": "Chhattisgarh",
+      "startDate": "2020",
+      "endDate": "2020",
+      "grade": "69%",
+      "activities": []
+    },
+    {
+      "id": 3,
+      "degree": "SSC (X) - Secondary School",
+      "institution": "Chhattisgarh Board",
+      "location": "Chhattisgarh",
+      "startDate": "2017",
+      "endDate": "2017",
+      "grade": "84.60%",
+      "activities": []
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+---
+/* Layout.astro — Main document shell with comprehensive SEO, fonts, and global styles */
+import "../styles/global.css";
+import profile from "../data/profile.json";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const siteUrl = "https://byamkeshkaiwartya.com";
+const {
+  title = `${profile.name} — ${profile.title}`,
+  description = "Software Developer building reliable systems and clean code. Passionate about system engineering, performance optimization, and scalable solutions.",
+} = Astro.props;
+
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" hreflang="en" href={canonicalUrl} />
+    <link rel="alternate" hreflang="x-default" href={canonicalUrl} />
+
+    <!-- Icons & Manifest -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Primary SEO Meta Tags -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={profile.name} />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Keywords -->
+    <meta
+      name="keywords"
+      content={`${profile.name}, ${profile.title}, Software Developer, Portfolio, ${profile.interests.join(", ")}`}
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content={profile.name} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content={`${siteUrl}/og_image.png`} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalUrl} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:creator" content="@byam11123" />
+    <meta name="twitter:site" content="@byam11123" />
+    <meta name="twitter:image" content={`${siteUrl}/og_image.png`} />
+
+    <!-- Additional SEO -->
+    <meta name="theme-color" content="#FFF8E7" />
+    <meta name="color-scheme" content="light" />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" is:inline>
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Byamkesh Kaiwartya",
+        "url": "https://byamkeshkaiwartya.com",
+        "image": "https://byamkeshkaiwartya.com/profile.png",
+        "jobTitle": "Software Developer",
+        "description": "Software Developer specializing in building reliable systems, performance optimization, and clean code.",
+        "knowsAbout": [
+          "Distributed Systems",
+          "Performance Engineering",
+          "Open Source",
+          "System Architecture",
+          "Database Design"
+        ],
+        "sameAs": [
+          "https://github.com/byam11123",
+          "https://www.linkedin.com/in/byamkesh-kaiwartya-80218a380/",
+          "https://x.com/byam11123"
+        ],
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://byamkeshkaiwartya.com"
+        }
+      }
+    </script>
+    <!-- Google Fonts: Space Grotesk (display) + JetBrains Mono (body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

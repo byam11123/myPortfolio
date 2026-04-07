@@ -1,0 +1,32 @@
+{
+  "backend": [
+    { "name": "Node.js" },
+    { "name": "Flask" },
+    { "name": "Java" },
+    { "name": "REST APIs" }
+  ],
+  "frontend": [
+    { "name": "React.js" },
+    { "name": "Next.js" },
+    { "name": "TypeScript" },
+    { "name": "Tailwind CSS" }
+  ],
+  "databases": [
+    { "name": "PostgreSQL" },
+    { "name": "Supabase" },
+    { "name": "Firebase" },
+    { "name": "SQL" }
+  ],
+  "tools": [
+    { "name": "Git" },
+    { "name": "GitHub" },
+    { "name": "Vercel" },
+    { "name": "CI/CD" }
+  ],
+  "ai-tech": [
+    { "name": "LLM APIs" },
+    { "name": "Prompt Engineering" },
+    { "name": "OCR" },
+    { "name": "AI Automation" }
+  ]
+}

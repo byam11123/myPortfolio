@@ -1,0 +1,153 @@
+---
+/* Projects.astro — Project cards grid */
+import projectsData from '../data/projects.json';
+import profile from '../data/profile.json';
+---
+
+<section id="projects" class="neo-section" style="background: var(--color-bg-alt);">
+  <div class="neo-container">
+    <h2 class="section-heading">Projects</h2>
+
+    <div class="projects-grid">
+      {projectsData.projects.map((project, index) => {
+        const colors = ['var(--color-coral)', 'var(--color-blue)', 'var(--color-yellow)', 'var(--color-purple)', 'var(--color-orange)'];
+        const accentColor = colors[index % colors.length];
+        return (
+          <div class="project-card neo-card">
+            <!-- Color accent bar -->
+            <div class="project-accent" style={`background: ${accentColor};`}></div>
+
+            <div class="project-content">
+              <div class="project-number">
+                <span>{String(project.id).padStart(2, '0')}</span>
+              </div>
+
+              <h3 class="project-title">{project.title}</h3>
+              <p class="project-description">{project.description}</p>
+
+              <div class="project-tech">
+                {project.tech.map((t: string) => (
+                  <span class="neo-tag" style={`background: ${accentColor};`}>{t}</span>
+                ))}
+              </div>
+
+              <div class="project-highlights">
+                {project.highlights.map((h: string) => (
+                  <span class="highlight-item">— {h}</span>
+                ))}
+              </div>
+
+              <div class="project-links">
+                {project.github && (
+                  <a href={`https://${project.github}`} target="_blank" rel="noopener noreferrer" class="neo-btn" style="font-size: 0.75rem; padding: 0.5rem 1rem;">
+                    GITHUB ↗
+                  </a>
+                )}
+                {project.live && (
+                  <a href={`https://${project.live}`} target="_blank" rel="noopener noreferrer" class="neo-btn neo-btn-primary" style="font-size: 0.75rem; padding: 0.5rem 1rem;">
+                    LIVE ↗
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+
+    <!-- See more button -->
+    <div class="projects-more">
+      <a href={`https://${profile.contact.github}`} target="_blank" rel="noopener noreferrer" class="neo-btn neo-btn-primary" style="font-size: 1rem; padding: 1rem 2.5rem;">
+        SEE MORE ON GITHUB ↗
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .project-accent {
+    height: 8px;
+    border-bottom: var(--border-w) solid var(--color-border);
+  }
+
+  .project-content {
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .project-number {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 2.5rem;
+    color: var(--color-border);
+    opacity: 0.15;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-title {
+    font-size: 1.35rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-description {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    margin-bottom: 1.25rem;
+  }
+
+  .project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .project-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-bottom: 1.5rem;
+    flex: 1;
+  }
+
+  .highlight-item {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    font-family: var(--font-body);
+  }
+
+  .project-links {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .projects-more {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+  }
+
+  @media (max-width: 768px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
