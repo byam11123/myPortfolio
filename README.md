@@ -2,7 +2,7 @@
 
 Personal portfolio website built with **Astro**, **React**, and **Tailwind CSS**.
 
-🌐 **Live Site:** [https://byamkeshkaiwartya.com](https://byamkeshkaiwartya.com)
+🌐 **Live Site:** [https://byamkeshkaiwartya.vercel.app/](https://byamkeshkaiwartya.vercel.app/)
 
 ---
 
