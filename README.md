@@ -5,7 +5,7 @@ Personal portfolio website built with **Astro**, **React**, and **Tailwind CSS**
 🌐 **Live Site:** [https://byamkeshkaiwartya.vercel.app](https://byamkeshkaiwartya.vercel.app)
 
 <p align="center">
-  <img src="./public/hero.png" alt="Portfolio Preview" style="border-radius: 9px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); max-width: 100%;" />
+  <a href="https://byamkeshkaiwartya.vercel.app"><img src="./public/hero.png" alt="Portfolio Preview" style="border-radius: 9px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); max-width: 100%;" /></a>
 </p>
 
 ---
